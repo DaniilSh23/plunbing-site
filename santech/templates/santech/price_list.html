@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ПРАЙС ЛИСТ</title>
+</head>
+<body>
+
+<h1>Прайс лист наших работ</h1>
+    <ul>
+        <hr>
+        {% for i_work in all_prices %}
+            <li>{{i_work.works_title}}: {{i_work.works_price}}</li>
+        <hr>
+        {% endfor %}
+    </ul>
+
+    {% if request.user.is_staff %}
+    <hr>
+    <h3>Обновить прайс лист</h3>
+        <form method="post" enctype="multipart/form-data" action="/update_prices/">
+            {% csrf_token %}
+            {{update_prices_form.as_p}}
+            <button type="submit">Загрузить файл</button>
+        </form>
+    {% endif %}
+
+</body>
+</html>

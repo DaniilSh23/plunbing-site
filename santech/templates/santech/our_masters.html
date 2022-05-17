@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>НАШИ МАСТЕРЫ</title>
+</head>
+<body>
+
+    {% for i_master in all_masters %}
+    <hr>
+        {% for i_photo in all_masters_photo %}
+            {% if i_photo.for_master_id == i_master.id %}
+                <image src="{{i_photo.image.url}}" height="350" width="350"></image>
+            {% endif %}
+        {% endfor %}
+    <h3>Имя: {{ i_master.name }}</h3>
+    <h3>Возраст: {{ i_master.age }} лет</h3>
+    <h3>Опыт: {{ i_master.work_experience }} лет</h3> level up нах
+    <hr>
+    {% endfor %}
+
+</body>
+</html>
